@@ -1,11 +1,11 @@
-import UserResults from "../components/users/UserResults"
+import UserResults from '../components/users/UserResults'
+import UserSearch from '../components/users/UserSearch'
 
 function Home() {
   return (
-      <>
-      {/* Searche COMPONON  */}
-     <UserResults />
-      
+    <>
+      <UserSearch />
+      <UserResults />
     </>
   )
 }

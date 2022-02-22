@@ -5,11 +5,12 @@ import Home from './pages/Home';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Header from './components/Header';
+import { WineProvider} from './context/wine/WineContext'
 
 
 function App() {
   return (
-    <>
+    <WineProvider>
     <Router>
       <div className="container">
         <Header />
@@ -21,7 +22,7 @@ function App() {
       </div>
     </Router>
     <ToastContainer />
-    </>
+    </WineProvider>
   );
 }
 
