@@ -21,7 +21,7 @@ if (!loading) {
       // end
       <div id="projects" class="container mt-5 pt-5">
 
-      <h1 class="text-warning mb-3 pb-2">My Projects</h1>
+      <h1 class="text-warning mb-3 pb-2">My Projects...</h1>
        <div class="row">
   
          
