@@ -1,44 +1,40 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { FaUser } from 'react-icons/fa'
-import { useSelector, useDispatch } from 'react-redux'
-import { register, reset} from '../features/auth/authSlice'
-// import Spinner from '../components/Spinner'
+import { useNavigate } from 'react-router-dom'
 
-function Register() {
+import { FaSignInAlt } from 'react-icons/fa'
+import { useSelector, useDispatch } from 'react-redux'
+import {login} from '../features/auth/authSlice'
+
+
+function Login() {
   const [formData, setFormData] = useState({
-    name: '',
     email: '',
     password: '',
-    password2: '',
   })
 
-  const { name, email, password, password2 } = formData
+  const { email, password } = formData
 
   const dispatch = useDispatch()
-
   const navigate = useNavigate()
 
 
   const { user, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
   )
+  
+   // Redirect when logged in
+   if (isSuccess || user) {
+    navigate('/')
+  }
 
   useEffect(() => {
     if (isError) {
       toast.error(message)
     }
-
-    // Redirect when logged in
-    if (isSuccess || user) {
-      navigate('/')
-    }
-
-    dispatch(reset())
-  }, [isError, isSuccess, user, message, navigate, dispatch])
-
-
+  }, [isError])
+   
+  
   const onChange = (e) => {
     setFormData((prevState) => ({
       ...prevState,
@@ -49,44 +45,26 @@ function Register() {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    if (password !== password2) {
-      toast.error('Passwords do not match')
-    } else {
-      const userData = {
-        name,
-        email,
-        password,
-      }
-
-      dispatch(register(userData))
+    const userData = {
+      email,
+      password,
     }
-  }
 
+    dispatch(login(userData))
+  }
 
 
   return (
     <>
       <section className='heading'>
         <h1>
-          <FaUser /> Register
+          <FaSignInAlt /> Login
         </h1>
-        <p>Please Create an Account</p>
+        <p>Please log in to get support</p>
       </section>
 
       <section className='form'>
         <form onSubmit={onSubmit}>
-          <div className='form-group'>
-            <input
-              type='text'
-              className='form-control'
-              id='name'
-              name='name'
-              value={name}
-              onChange={onChange}
-              placeholder='Enter your name'
-              required
-            />
-          </div>
           <div className='form-group'>
             <input
               type='email'
@@ -112,18 +90,6 @@ function Register() {
             />
           </div>
           <div className='form-group'>
-            <input
-              type='password'
-              className='form-control'
-              id='password2'
-              name='password2'
-              value={password2}
-              onChange={onChange}
-              placeholder='Confirm password'
-              required
-            />
-          </div>
-          <div className='form-group'>
             <button className='btn btn-block'>Submit</button>
           </div>
         </form>
@@ -132,4 +98,4 @@ function Register() {
   )
 }
 
-export default Register
+export default Login

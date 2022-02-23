@@ -21,13 +21,19 @@ function UserSearch() {
 
   }
   
+  const styles = {
+    btn: {
+      background: '#58181F'
     
+    }
+  }
 
   return (
+    <section className='form'>
     <div className='grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2 mb-8 gap-8'>
     <div>
        <form onSubmit={handleSubmit}>
-        <div className='form-control'>
+        <div className='form-group'>
           <div className='relative'>
             <input
               type='text'
@@ -38,7 +44,7 @@ function UserSearch() {
             />
             <button
               type='submit'
-              className='absolute top-0 right-0 rounded-l-none w-36 btn btn-lg'
+              className='absolute top-0 right-0 rounded-l-none w-36 btn btn-lg' style={styles.btn}
             >
               Go
             </button>
@@ -57,6 +63,7 @@ function UserSearch() {
       </div>
     )}
   </div>
+  </section>
   )
 }
 

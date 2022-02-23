@@ -1,6 +1,7 @@
 import { useContext} from 'react'
 import UserItem from './UserItem'
 import WineContext from '../../context/wine/WineContext'
+import '../Styles/Card.css'
 
 
 
@@ -19,17 +20,17 @@ if (!loading) {
     //     ))}
     //   </div>
       // end
-      <div id="projects" class="container mt-5 pt-5">
+      <div id="projects" className="container mt-5 pt-5">
 
-      <h1 class="text-warning mb-3 pb-2">My Projects...</h1>
-       <div class="row">
+      {/* <h1 class="text-warning mb-3 pb-2">Text...</h1> */}
+       {/* <div class="row"> */}
   
          
        {users.map((user) => (
              <UserItem key={user.id} user={user} />
          ))}
           
-       </div>
+       {/* </div> */}
        </div>
     )
   } else {

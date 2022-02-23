@@ -15,7 +15,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #000;
+  color: #e6e6e6;
 }
 
 p {
@@ -39,14 +39,14 @@ h3 {
 
 .container {
   width: 100%;
-  max-width: 960px;
+  max-width: 100%;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 2px;
   text-align: center;
 }
 
 .header {
-  /* background: #58181F; */
+  background: #58181F;
   display: flex;
   justify-content: space-between;
   align-items: center;
